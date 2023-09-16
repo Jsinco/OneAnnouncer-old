@@ -58,11 +58,10 @@ processResources {
     }
 }
 
-publishToMavenLocal {
-    repositories {
-        maven {
-            url = uri('../maven-repo')
+publishing {
+    publications {
+        myLib(MavenPublication) {
+            from components.java
         }
     }
 }
-
