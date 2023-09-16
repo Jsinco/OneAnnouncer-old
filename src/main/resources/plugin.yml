@@ -1,7 +1,8 @@
 name: OneAnnouncer
-version: '${project.version}'
+version: '${version}'
 main: me.jsinco.oneannouncer.OneAnnouncer
 api-version: '1.20'
+author: Jsinco
 commands:
   say:
     description: Broadcast a message with a custom prefix and gradients
