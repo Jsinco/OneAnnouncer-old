@@ -1,6 +1,7 @@
 package me.jsinco.oneannouncer.commands;
 
 import com.iridium.iridiumcolorapi.IridiumColorAPI;
+import me.jsinco.oneannouncer.JDAMethods;
 import me.jsinco.oneannouncer.OneAnnouncer;
 import me.jsinco.oneannouncer.Util;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
@@ -37,18 +38,18 @@ public class Announce implements CommandExecutor  {
         Player playerSender = sender instanceof Player ? (Player) sender : null;
         msg = Util.executeStringCommands(playerSender, Util.addPlaceholders("announce-cmd.placeholders", msg));
 
-        TextChannel channel = OneAnnouncer.getJDA().getTextChannelById(OneAnnouncer.plugin().getConfig().getString("announce-cmd.default-channel-id"));
+        String channel = OneAnnouncer.plugin().getConfig().getString("announce-cmd.default-channel-id");
 
         if (Util.checkForChannelInString(msg)) {
             Map<String, String> channelMap = Util.getChannelFromString(msg);
-            channel = OneAnnouncer.getJDA().getTextChannelById(channelMap.get("channel"));
+            channel = channelMap.get("channel");
             msg = channelMap.get("msg");
         }
 
         if (channel == null) {
             sender.sendMessage("Channel is invalid. Check config's default-channel-id or specify a real channel with <CHANNEL:channel-id> in your message.");
         } else {
-            channel.sendMessage(msg).queue();
+            JDAMethods.sendMessageDiscordChannel(channel, msg);
             sender.sendMessage(IridiumColorAPI.process(Util.colorcode(OneAnnouncer.plugin().getConfig().getString("announce-cmd.default-prefix") + "Announced message")));
         }
 
