@@ -58,21 +58,20 @@ processResources {
     }
 }
 
-publishing {
-    publications {
-        myLib(MavenPublication) {
-            from components.java
+publishToMavenLocal {
+    publishing {
+        publications {
+            // ... artifact publications
+
+            // Specify relocation POM
+            relocation(MavenPublication) {
+                pom {
+                    // Old artifact coordinates
+                    groupId = "me.jsinco"
+                    artifactId = "OneAnnouncer"
+                    version = "1.0.0"
+                }
+            }
         }
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-
-        // e.g this is how you would add jitpack
-        maven { url "https://jitpack.io" }
-        // Add any repositories you would be adding to all projects here
     }
 }
