@@ -1,0 +1,65 @@
+##############################
+# OneAnnouncer Configuration #
+##############################
+
+# All configuration sections that have a 'default-prefix' will allow you to change the prefix when running the command.
+# Usage: <P>*String*</P>
+# Example: /say <P>MyNewPrefix >></P>
+
+# All strings that are broadcasted have the ability to run commands within them. All commands are run as if the sender executed them.
+# Usage: <CMD>*String*</CMD>
+# Example: <CMD>kill @a</CMD>
+
+# A command that expands on the default /say command. Broadcast messages to all players online with gradients, prefixes, etc.
+# Static Placeholders:
+# $sender, replaced with the sender's name as per defined in the senders category
+# $player, replaced with the player's name
+say-cmd:
+  aliases: [onesay,osay]
+  default-prefix: '<GRADIENT:B2ACFB>&l$sender</GRADIENT:85FD9F> &8»&r '
+  senders: # What should the $sender placeholder replace with depending on the sender's type?
+    console-prefix: 'Server'
+    command-block-prefix: 'CMD Block'
+    player-prefix: '$player'
+  placeholders: # Add your own placeholders! All placeholders must be called with $placeholder (ex: $example)
+    example: 'hey check out my placeholder!'
+
+# Automated announcer. Message broadcasts at specific intervals
+# No static placeholders.
+auto-announcer:
+  enabled: true
+  interval: 600 # How often should we send a message? (in seconds)
+  placeholders: # Add your own placeholders! All placeholders must be called with $placeholder (ex: $prefix)
+    prefix: '<GRADIENT:B2ACFB>&lOne</GRADIENT:85FD9F> &8»&r'
+  messages:
+    - '$prefix &eThis is a test message!'
+    - '$prefix &eThis is another test message! <CMD>osay See? Even commands work!</CMD>'
+
+
+
+# --- Discord Integration ---
+# Discord integration requires a bot token. You can get one by creating a bot at https://discord.com/developers/applications
+bot-token: "YOUR_BOT_TOKEN"
+
+# Change which channel to send messages to at command runtime.
+# Usage: <CHANNEL:*channel_id*>
+# Example: /announce <CHANNEL:123456789> Hello world!
+# Announce command. Send messages between discord and minecraft. Choose which channel to send to, etc.
+# Only members with permission to use 'Mention @everyone, @here, and all roles' will be able to use the command.
+announce-cmd:
+  aliases: [oneannounce,oa] # Command aliases for Minecraft only!
+  default-channel-id: "CHANNEL_ID" # The channel to send messages to by default, specify specific channels in command otherwise with <CHANNEL:channel_id>
+  default-prefix: '<GRADIENT:B2ACFB>&lOne</GRADIENT:85FD9F> &8»&r '
+  placeholders: # Add your own placeholders! All placeholders must be called with $placeholder (ex: $example)
+    example: 'hey check out my placeholder!'
+
+
+
+# Relay announcements to Minecraft from Discord
+# Only members with permission to use 'Mention @everyone, @here, and all roles' will have their messages relayed.
+relay:
+  listen-for: ['@everyone', '@here']
+  default-prefix: '<GRADIENT:B2ACFB>&lOne</GRADIENT:85FD9F> &8»&r '
+  max-relay-length: 10 # If a discord announcement has more than this number of words, it will be relayed with the replacement message instead
+  replacement-message: 'A discord announcement was sent. Please check the discord server for more information.'
+

@@ -1,0 +1,14 @@
+name: OneAnnouncer
+version: '${project.version}'
+main: me.jsinco.oneannouncer.OneAnnouncer
+api-version: '1.20'
+commands:
+  say:
+    description: Broadcast a message with a custom prefix and gradients
+    usage: /<command> [message]
+  announce:
+    description: Send a message to a discord channel
+    usage: /<command> <CHANNEL:channel_id> [message]
+  onereload:
+    description: Reload the plugin
+    usage: /<command>
