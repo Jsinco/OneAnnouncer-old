@@ -1,5 +1,6 @@
-package me.jsinco.oneannouncer;
+package me.jsinco.oneannouncer.discord;
 
+import me.jsinco.oneannouncer.OneAnnouncer;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
 public class JDAMethods {

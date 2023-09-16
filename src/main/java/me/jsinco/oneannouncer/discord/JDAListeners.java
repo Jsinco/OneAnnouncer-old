@@ -1,6 +1,8 @@
-package me.jsinco.oneannouncer;
+package me.jsinco.oneannouncer.discord;
 
 import com.iridium.iridiumcolorapi.IridiumColorAPI;
+import me.jsinco.oneannouncer.OneAnnouncer;
+import me.jsinco.oneannouncer.Util;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;

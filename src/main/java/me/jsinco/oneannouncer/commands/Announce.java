@@ -1,10 +1,9 @@
 package me.jsinco.oneannouncer.commands;
 
 import com.iridium.iridiumcolorapi.IridiumColorAPI;
-import me.jsinco.oneannouncer.JDAMethods;
+import me.jsinco.oneannouncer.discord.JDAMethods;
 import me.jsinco.oneannouncer.OneAnnouncer;
 import me.jsinco.oneannouncer.Util;
-import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import org.bukkit.Bukkit;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
